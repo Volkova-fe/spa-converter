@@ -60,8 +60,7 @@ const Rates = () => {
 				<Table sx={{ minWidth: 280, maxWidth: 310 }} aria-label="caption table">
 					<TableHead>
 						<TableRow>
-							<TableCell>Наименование валюты</TableCell>
-							<TableCell align="right">Курс</TableCell>
+							<TableCell>Текущий курс валюты</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
@@ -70,10 +69,7 @@ const Rates = () => {
 								(name !== currencyBase && rate > 0 ?
 									<TableRow key={name}>
 										<TableCell component="th" scope="row">
-											{name}
-										</TableCell>
-										<TableCell align="right">
-											{_.round((1 / rate), 3)}
+											1 {currencyBase} = {_.round((1 / rate), 3)} {name}
 										</TableCell>
 									</TableRow> : '')
 								: '')}
