@@ -33,11 +33,11 @@ export const ratesReducer = (state = ratesInitialState, action) => {
 		case RATES_REQUEST_SUCCESS: {
 			return {
 				...state,
-				base: action.playload.base,
-				rates: action.playload.rates,
 				ratesFailed: false,
 				ratesSuccess: true,
-				ratesRequest: false
+				ratesRequest: false,
+				base: action.playload.base,
+				rates: action.playload.rates,
 			};
 		}
 		default: {

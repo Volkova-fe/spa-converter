@@ -15,10 +15,11 @@ import {
 } from '@mui/material';
 import { getData } from '../../services/actions/rates';
 import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../../components/loader/loader';
 
 const Rates = () => {
 	const dispatch = useDispatch();
-	const { base, rates } = useSelector(state => state.rates)
+	const { base, rates, ratesRequest } = useSelector(state => state.rates)
 	const [names, setNames] = useState([]);
 	const [ratesInfo, setRatesInfo] = useState([]);
 	const [currencyBase, setCurrencyBase] = useState('');
@@ -26,7 +27,7 @@ const Rates = () => {
 	useEffect(() => {
 		setCurrencyBase(navigator.language === 'ru' ? 'RUB' : 'USD');
 		calculate(currencyBase);
-	}, [rates])
+	}, [rates, ratesRequest])
 
 
 	useEffect(() => {
@@ -60,26 +61,29 @@ const Rates = () => {
 					{names.map((name) => <option key={name}>{name}</option>)}
 				</Select>
 			</FormControl>
-			<TableContainer sx={{ minWidth: 280, maxWidth: 310 }} component={Paper}>
-				<Table sx={{ minWidth: 280, maxWidth: 310 }} aria-label="caption table">
-					<TableHead>
-						<TableRow>
-							<TableCell>Текущий курс валюты</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{ratesInfo.map(([name, rate]) =>
-							name === 'RUB' || name === 'USD' || name === 'EUR'  ?
-								(name !== currencyBase && rate > 0 ?
-									<TableRow key={name}>
-										<TableCell component="th" scope="row">
-											1 {currencyBase} = {_.round((1 / rate), 2)} {name}
-										</TableCell>
-									</TableRow> : '')
-								: '')}
-					</TableBody>
-				</Table>
-			</TableContainer>
+			{!ratesRequest ?
+				(<TableContainer sx={{ minWidth: 280, maxWidth: 310 }} component={Paper}>
+					<Table sx={{ minWidth: 280, maxWidth: 310 }} aria-label="caption table">
+						<TableHead>
+							<TableRow>
+								<TableCell>Текущий курс валюты</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{ratesInfo.map(([name, rate]) =>
+								name === 'RUB' || name === 'USD' || name === 'EUR' ?
+									(name !== currencyBase && rate > 0 ?
+										<TableRow key={name}>
+											<TableCell component="th" scope="row">
+												1 {currencyBase} = {_.round((1 / rate), 2)} {name}
+											</TableCell>
+										</TableRow> : '')
+									: '')}
+						</TableBody>
+					</Table>
+				</TableContainer>)
+				: <Loader/>}
+
 		</div>
 	)
 }
