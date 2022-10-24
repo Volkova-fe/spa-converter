@@ -25,7 +25,7 @@ const Rates = () => {
 	const [currencyBase, setCurrencyBase] = useState('');
 
 	useEffect(() => {
-		setCurrencyBase(navigator.language === 'ru' ? 'RUB' : 'USD');
+		setCurrencyBase(navigator.language === 'ru' || "ru-Latn" ? 'RUB' : 'USD');
 		calculate(currencyBase);
 	}, [rates, ratesRequest])
 
