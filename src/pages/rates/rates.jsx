@@ -75,7 +75,7 @@ const Rates = () => {
 									(name !== currencyBase && rate > 0 ?
 										<TableRow key={name}>
 											<TableCell component="th" scope="row">
-												1 {currencyBase} = {_.round((1 / rate), 2)} {name}
+												1 {name} = {_.round((1 / rate), 2)} {currencyBase}
 											</TableCell>
 										</TableRow> : '')
 									: '')}
