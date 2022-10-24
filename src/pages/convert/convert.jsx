@@ -72,7 +72,7 @@ const Convert = () => {
                         <TextField
                             sx={{ minWidth: 100, maxWidth: 150 }}
                             variant='outlined'
-                            value={valueTo}
+                            value={valueTo ? valueTo : '0'}
                             disabled
                         />
                         <FormControl className={style.dropdown} variant='outlined'>
