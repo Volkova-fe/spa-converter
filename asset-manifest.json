@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Volkova-fe/spa-converter/static/css/main.919937fb.css",
+    "main.js": "/Volkova-fe/spa-converter/static/js/main.7d411a66.js",
+    "index.html": "/Volkova-fe/spa-converter/index.html",
+    "main.919937fb.css.map": "/Volkova-fe/spa-converter/static/css/main.919937fb.css.map",
+    "main.7d411a66.js.map": "/Volkova-fe/spa-converter/static/js/main.7d411a66.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.919937fb.css",
+    "static/js/main.7d411a66.js"
+  ]
+}
