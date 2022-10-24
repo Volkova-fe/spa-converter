@@ -23,19 +23,23 @@ const Rates = () => {
 	const [ratesInfo, setRatesInfo] = useState([]);
 	const [currencyBase, setCurrencyBase] = useState('');
 
+	useEffect(() => {
+		setCurrencyBase(navigator.language === 'ru' ? 'RUB' : 'USD');
+		calculate(currencyBase);
+	}, [rates])
+
 
 	useEffect(() => {
 		dispatch(getData());
 		setRatesInfo(Object.entries(rates));
 		setNames(Object.keys(rates));
-		setCurrencyBase(navigator.language === 'ru' ? 'RUB' : 'USD')
-		fx.base = base;
+		fx.base = currencyBase;
 		fx.rates = rates;
 	}, [base]);
 
 	const calculate = (value) => {
 		const result = names.map((name) => {
-			const rate = _.round(fx(1).convert({ from: value, to: name }), 2);
+			const rate = _.round(fx(1).convert({ from: value, to: name }), 3);
 			return [name, rate];
 		});
 		setRatesInfo(result);
@@ -65,11 +69,11 @@ const Rates = () => {
 					</TableHead>
 					<TableBody>
 						{ratesInfo.map(([name, rate]) =>
-							name === 'EUR' || name === 'RUB' || name === 'USD' ?
+							name === 'RUB' || name === 'USD' || name === 'EUR'  ?
 								(name !== currencyBase && rate > 0 ?
 									<TableRow key={name}>
 										<TableCell component="th" scope="row">
-											1 {currencyBase} = {_.round((1 / rate), 3)} {name}
+											1 {currencyBase} = {_.round((1 / rate), 2)} {name}
 										</TableCell>
 									</TableRow> : '')
 								: '')}
