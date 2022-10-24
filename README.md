@@ -33,3 +33,19 @@ ___
 
 * [Ссылка на страницу проекта github](https://volkova-fe.github.io/spa-converter/)
 
+___
+## Локальная установка и запуск
+
+```
+Клонировать репозиторий
+  git clone git@github.com:Volkova-fe/spa-converter.git
+
+Войти в проект через консоль
+  cd spa-converter
+
+Установить зависимости
+  npm install
+
+Старт сервера
+  npm start
+```
