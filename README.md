@@ -1,4 +1,7 @@
 ## Конвертер валют
+
+<img src="demo/main_convert.png" width="200">
+
 ___
 ## Обзор
 
