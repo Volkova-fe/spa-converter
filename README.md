@@ -18,9 +18,10 @@ ___
 * Redux (redux-thunk)
 * React Router v5.2.1
 * Установка заготовенного CRA - npx create-react-app react-burger --template typescript 
-* Использована библиотека готовых компонентов - MUI CORE
-* Использована библиотека - money.js
-* Использована библиотека - lodash
+* Библиотека готовых компонентов - MUI CORE
+* Библиотека - money.js
+* Библиотека - lodash
+* Библиотека - axios
  
 * Организована файловая структура : 
   - Компоненты в директории components/, экшены и редьюсеры - services/, роутинг - router/, страницы - pages/
